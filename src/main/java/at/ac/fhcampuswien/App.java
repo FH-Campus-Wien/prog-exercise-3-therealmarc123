@@ -49,14 +49,32 @@ for(int num2=2; num2 <= first_d;num2++){
 
 */
 
-    public static void guessingGame() {
-        double x = 0;
-        double y = 0;
-        int count = 0;
+    public static void guessingGame(int x) {
+        int num = 0;
         Scanner var = new Scanner(System.in);
 
-        System.out.print("Number 1: ");
-        y = var.nextInt();
+
+        for (int y = 0; y <= 9; y++){
+            System.out.print("Guess number " + (y+1) + ": ");
+            num = var.nextInt();
+
+            if (num == x) {
+                System.out.println("You won wisenheimer!");
+                y = 10;
+            }
+
+            else if (num < x && y != 9) {
+                System.out.println( "The number AI picked is higher than your guess." );
+            }
+
+            else if (num > x && y != 9) {
+                System.out.println( "The number AI picked is lower than your guess." );
+            }
+
+            else if (y == 9) {
+                System.out.println("You lost! Have you ever heard of divide & conquer?");
+            }
+        }
     }
 
     public static long[] lcg(long seed)
@@ -70,13 +88,11 @@ for(int num2=2; num2 <= first_d;num2++){
 
         for(int y = 0; y < array.length; y++)
         {
-            if( y == 0 )
-            {
+            if( y == 0 ) {
                 x = seed;
             }
             
-            else
-            {
+            else {
                 x = array[y - 1];
             }
             array[y] = (a * x + c) % m;
