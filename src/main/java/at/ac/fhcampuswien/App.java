@@ -59,6 +59,32 @@ for(int num2=2; num2 <= first_d;num2++){
         y = var.nextInt();
     }
 
+    public static long[] lcg(long seed)
+    {
+        long[] array = new long[10];
+        long x;
+        long m = (long) Math.pow(2, 31);
+        int c = 12345;
+        long a = 1103515245;
+
+
+        for(int y = 0; y < array.length; y++)
+        {
+            if( y == 0 )
+            {
+                x = seed;
+            }
+            
+            else
+            {
+                x = array[y - 1];
+            }
+            array[y] = (a * x + c) % m;
+        }
+        return array;
+    }
+
+
     public static void main(String[] args) {
         // test your method implementations here
         // make method calls
