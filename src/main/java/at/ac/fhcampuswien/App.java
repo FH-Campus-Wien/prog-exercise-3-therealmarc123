@@ -118,7 +118,35 @@ for(int num2=2; num2 <= first_d;num2++){
         return true;
     }
 
+    public static int checkDigit(int[] array1)
+    {
+        int gewichtung = 2;
+        int x;
+        int sum = 0;
+        int psum = 0;
 
+        for (int y = 0; y+1 <= array1.length;y++)
+        {
+            gewichtung = y + 2;
+            x = gewichtung * array1[y];
+            sum += x;
+
+        }
+        sum = sum % 11;
+
+        psum = 11 - sum;
+
+        if (psum == 10){
+            psum = 0;
+        }
+
+        if (psum == 11){
+            psum = 5;
+        }
+
+
+        return psum;
+    }
 
     public static void main(String[] args) {
         // test your method implementations here
