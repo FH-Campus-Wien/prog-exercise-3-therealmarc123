@@ -104,7 +104,7 @@ for(int num2=2; num2 <= first_d;num2++){
     {
         int x;
 
-        if (array1.length != array2.length ) {
+        if (array1.length != array2.length) {
             return false;
         }
 
@@ -171,6 +171,10 @@ for(int num2=2; num2 <= first_d;num2++){
 
        */
         oneMonthCalendar(31,7);
+
+        System.out.println();
+
+        lcg(0);
 
         System.out.println();
         int[] array1 = new int[]{1, 2, 3, 4, 5};
