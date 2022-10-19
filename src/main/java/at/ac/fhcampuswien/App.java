@@ -86,9 +86,9 @@ for(int num2=2; num2 <= first_d;num2++){
         long a = 1103515245;
 
 
-        for(int y = 0; y < array.length; y++)
+        for (int y = 0; y < array.length; y++)
         {
-            if( y == 0 ) {
+            if (y == 0) {
                 x = seed;
             }
             
@@ -99,6 +99,25 @@ for(int num2=2; num2 <= first_d;num2++){
         }
         return array;
     }
+
+    public static boolean swapArrays(int[] array1, int[] array2)
+    {
+        int x;
+
+        if (array1.length != array2.length ) {
+            return false;
+        }
+
+        for (int y = 0; y < array1.length; y++)
+        {
+            x = array1[y];
+            array1[y] = array2[y];
+            array2[y] = x;
+        }
+
+        return true;
+    }
+
 
 
     public static void main(String[] args) {
@@ -124,6 +143,11 @@ for(int num2=2; num2 <= first_d;num2++){
 
        */
         oneMonthCalendar(31,7);
+
+        System.out.println();
+        int[] array1 = new int[]{1, 2, 3, 4, 5};
+        int[] array2 = new int[]{100, 99, 60, 44, 2};
+        swapArrays( array1, array2 );
 
     }
 }
