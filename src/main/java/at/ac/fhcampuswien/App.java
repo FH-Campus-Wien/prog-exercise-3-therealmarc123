@@ -12,20 +12,19 @@ public class App {
         // make method calls
         // print their results
         // etc.
-int num1 = first_d;
-int num3 = 1;
+        int num1 = first_d;
+        int num3 = 1;
 
-for(int num2=2; num2 <= first_d;num2++){
-    System.out.print("   ");
-}
+        for (int num2 = 2; num2 <= first_d; num2++) {
+            System.out.print("   ");
+        }
 
-        while(num3 <= days){
+        while (num3 <= days) {
 
-            while (num1 <= 7 && num3 <= days ) {
+            while (num1 <= 7 && num3 <= days) {
 
 
-
-                if(num3 < 10) {
+                if (num3 < 10) {
                     System.out.print(" ");
                 }
                 System.out.print(num3);
@@ -41,14 +40,6 @@ for(int num2=2; num2 <= first_d;num2++){
         }
     }
 
-    /*public static boolean swapArrays(int[] numbers1, int[] numbers2){
-            if(numbers1.length != numbers2.length)
-                return false;
-        return true;
-    }
-
-*/
-
 
 
     public static void guessingGame(int x) {
@@ -56,37 +47,29 @@ for(int num2=2; num2 <= first_d;num2++){
         Scanner var = new Scanner(System.in);
 
 
-        for (int y = 0; y <= 9; y++){
-            System.out.print("Guess number " + (y+1) + ": ");
+        for (int y = 0; y <= 9; y++) {
+            System.out.print("Guess number " + (y + 1) + ": ");
             num = var.nextInt();
 
             if (num == x) {
                 System.out.println("You won wisenheimer!");
                 y = 10;
-            }
-
-            else if (num < x && y != 9) {
-                System.out.println( "The number AI picked is higher than your guess." );
-            }
-
-            else if (num > x && y != 9) {
-                System.out.println( "The number AI picked is lower than your guess." );
-            }
-
-            else if (y == 9) {
+            } else if (num < x && y != 9) {
+                System.out.println("The number AI picked is higher than your guess.");
+            } else if (num > x && y != 9) {
+                System.out.println("The number AI picked is lower than your guess.");
+            } else if (y == 9) {
                 System.out.println("You lost! Have you ever heard of divide & conquer?");
             }
         }
     }
 
-    public static int randomNumberBetweenOneAndHundred()
-    {
+    public static int randomNumberBetweenOneAndHundred() {
         Random num = new Random();
         return num.ints(1, 101).findAny().getAsInt();
     }
 
-    public static long[] lcg(long seed)
-    {
+    public static long[] lcg(long seed) {
         long[] array = new long[10];
         long x;
         long m = (long) Math.pow(2, 31);
@@ -94,13 +77,10 @@ for(int num2=2; num2 <= first_d;num2++){
         long a = 1103515245;
 
 
-        for (int y = 0; y < array.length; y++)
-        {
+        for (int y = 0; y < array.length; y++) {
             if (y == 0) {
                 x = seed;
-            }
-            
-            else {
+            } else {
                 x = array[y - 1];
             }
             array[y] = (a * x + c) % m;
@@ -108,16 +88,14 @@ for(int num2=2; num2 <= first_d;num2++){
         return array;
     }
 
-    public static boolean swapArrays(int[] array1, int[] array2)
-    {
+    public static boolean swapArrays(int[] array1, int[] array2) {
         int x;
 
         if (array1.length != array2.length) {
             return false;
         }
 
-        for (int y = 0; y < array1.length; y++)
-        {
+        for (int y = 0; y < array1.length; y++) {
             x = array1[y];
             array1[y] = array2[y];
             array2[y] = x;
@@ -126,15 +104,13 @@ for(int num2=2; num2 <= first_d;num2++){
         return true;
     }
 
-    public static int checkDigit(int[] array1)
-    {
+    public static int checkDigit(int[] array1) {
         int gewichtung = 2;
         int x;
         int sum = 0;
         int psum = 0;
 
-        for (int y = 0; y+1 <= array1.length;y++)
-        {
+        for (int y = 0; y + 1 <= array1.length; y++) {
             gewichtung = y + 2;
             x = gewichtung * array1[y];
             sum += x;
@@ -144,11 +120,11 @@ for(int num2=2; num2 <= first_d;num2++){
 
         psum = 11 - sum;
 
-        if (psum == 10){
+        if (psum == 10) {
             psum = 0;
         }
 
-        if (psum == 11){
+        if (psum == 11) {
             psum = 5;
         }
 
@@ -156,7 +132,47 @@ for(int num2=2; num2 <= first_d;num2++){
         return psum;
     }
 
-    public static void main(String[] args) {
+    public static String camelCase(String text) {
+        int char_diff = 32;
+        String smallchar= "";
+        String camelcase= "";
+
+        String[] arrayWords = text.split(" ");
+        char[] arrayStringChars;
+
+        for (String words : arrayWords) {
+            arrayStringChars = words.toCharArray();
+            boolean notFirstChar = false;
+            for (char x : arrayStringChars) {
+                if (x >= 'a' && x <= 'z') {
+                    smallchar += x;
+                }
+                else if(x >= 'A' && x <= 'Z') {
+                    smallchar += (char) (x + char_diff);
+                }
+            }
+
+            arrayStringChars = smallchar.toCharArray();
+
+            for (char y : arrayStringChars) {
+                if (y >= 'a' && y <= 'z') {
+                    if (notFirstChar) {
+                        camelcase += y;
+                    } else {
+                        camelcase += (char) (y - char_diff);
+                        notFirstChar = true;
+                    }
+                }
+            }
+            smallchar = "";
+        }
+        return camelcase;
+    }
+
+
+
+
+        public static void main(String[] args) {
         // test your method implementations here
         // make method calls
         // print their results
