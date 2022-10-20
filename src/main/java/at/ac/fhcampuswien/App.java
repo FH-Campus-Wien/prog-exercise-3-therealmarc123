@@ -49,6 +49,8 @@ for(int num2=2; num2 <= first_d;num2++){
 
 */
 
+
+
     public static void guessingGame(int x) {
         int num = 0;
         Scanner var = new Scanner(System.in);
@@ -75,6 +77,12 @@ for(int num2=2; num2 <= first_d;num2++){
                 System.out.println("You lost! Have you ever heard of divide & conquer?");
             }
         }
+    }
+
+    public static int randomNumberBetweenOneAndHundred()
+    {
+        Random num = new Random();
+        return num.ints(1, 101).findAny().getAsInt();
     }
 
     public static long[] lcg(long seed)
@@ -173,13 +181,21 @@ for(int num2=2; num2 <= first_d;num2++){
         oneMonthCalendar(31,7);
 
         System.out.println();
+        //lcg(0);
 
-        lcg(0);
+        long[] array = lcg(0);
+        for(int y = 0; y < array.length; y++)
+        {
+            System.out.print(array[y] + " ");
+        }
 
         System.out.println();
         int[] array1 = new int[]{1, 2, 3, 4, 5};
         int[] array2 = new int[]{100, 99, 60, 44, 2};
         swapArrays( array1, array2 );
 
+        System.out.println();
+        int y = randomNumberBetweenOneAndHundred();
+        guessingGame(y);
     }
 }
