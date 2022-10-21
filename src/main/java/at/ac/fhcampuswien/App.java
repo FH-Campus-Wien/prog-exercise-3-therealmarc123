@@ -133,12 +133,73 @@ public class App {
     }
 
     public static String camelCase(String text) {
+        boolean FirstChar = true;
         int char_diff = 32;
-        String smallchar= "";
-        String camelcase= "";
+        StringBuilder builder = new StringBuilder();
 
+        char[] arrayChars = text.toCharArray();
+
+        /*String smallchar= "";
+        String camelcase= "";
+        char[] arrayStringChars2;
+        char[] splitText = null;
+        int hilf = 0;
+        int hilf2 = 0;
+        String[] arraySplitWords;
         String[] arrayWords = text.split(" ");
-        char[] arrayStringChars;
+         */
+
+
+        for (int y = 0; y < arrayChars.length; y++) {
+            if (arrayChars[y] >= 'a' && arrayChars[y] <= 'z'){
+                if (FirstChar){
+
+                    FirstChar = false;
+                    arrayChars[y] -= char_diff;
+
+                }
+
+                builder.append(arrayChars[y]);
+
+            }
+            else if (arrayChars[y] >= 'A' && arrayChars[y] <= 'Z') {
+                if (!FirstChar) {
+
+                    arrayChars[y] += char_diff;
+
+                }
+
+                FirstChar = false;
+                builder.append(arrayChars[y]);
+
+            } else if (arrayChars[y] == ' ') {
+
+                FirstChar = true;
+
+            }
+
+        }
+
+        return builder.toString();
+
+           /* arrayStringChars2 = text.toCharArray();
+            for (char x : arrayStringChars2) {
+                if (x == ' ' && hilf2 == 0) {
+                    hilf++;
+                    hilf2 = 1;
+                }
+                if (x != ' ') {
+                    //arraySplitWords[hilf] += (char) (x);
+
+                    hilf2 = 0;
+                }
+                if (hilf2 == 0) {
+                    splitText[hilf] += (char) (x);
+                }
+            }
+        }
+
+
 
         for (String words : arrayWords) {
             arrayStringChars = words.toCharArray();
@@ -167,6 +228,11 @@ public class App {
             smallchar = "";
         }
         return camelcase;
+
+         */
+
+
+
     }
 
 
